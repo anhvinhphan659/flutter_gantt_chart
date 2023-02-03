@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gant_chart/component/gantt_chart.dart';
+import 'package:flutter_gant_chart/component/gantt_chart_task_item.dart';
 
 void main() {
   runApp(const MyApp());
@@ -64,8 +65,34 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    var taskList = [
+      GanttChartTaskItem(
+          startDate: DateTime(2022, 12, 28),
+          endDate: DateTime(2022, 12, 31),
+          percent: 75,
+          taskDescription: "Hello World",
+          onProgressColor: Colors.red,
+          restProgressColor: Colors.red.shade200),
+      GanttChartTaskItem(
+          startDate: DateTime(2022, 12, 29),
+          endDate: DateTime(2023, 1, 2),
+          percent: 100,
+          taskDescription: "Hello World",
+          onProgressColor: Colors.yellow,
+          restProgressColor: Colors.yellow.shade200),
+      GanttChartTaskItem(
+          startDate: DateTime(2023, 1, 24),
+          endDate: DateTime(2023, 2, 29),
+          percent: 3,
+          taskDescription: "Hello World",
+          onProgressColor: Colors.orange,
+          restProgressColor: Colors.orange.shade200),
+    ];
+
     return Scaffold(
-      body: GanttChart(),
+      body: GanttChart(
+        taskItems: taskList,
+      ),
     );
   }
 }
