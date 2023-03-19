@@ -13,13 +13,19 @@ import 'gantt_chart_task_item.dart';
 //style configuration
 TextStyle monthText = const TextStyle(
   fontFamily: "Outfit",
-  fontWeight: FontWeight.w400,
+  fontWeight: FontWeight.w600,
   fontSize: 15,
 );
 TextStyle dayText = const TextStyle(
   fontFamily: "Outfit",
   fontWeight: FontWeight.w300,
   fontSize: 15,
+);
+
+TextStyle taskItemText = const TextStyle(
+  fontFamily: "Open-sans",
+  fontWeight: FontWeight.w400,
+  fontSize: 14,
 );
 
 //end style configuration

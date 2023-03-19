@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gant_chart/component/gantt_chart_task_item.dart';
+import 'package:flutter_gant_chart/component/utils.dart';
 
 class GanttChartTaskItemWidget extends StatelessWidget {
   /*
@@ -11,12 +12,16 @@ class GanttChartTaskItemWidget extends StatelessWidget {
 
   DateTime? startDate;
   DateTime? endDate;
+
+  final TextStyle? taskItemStyle;
+
   final GanttChartTaskItem taskItem;
 
   GanttChartTaskItemWidget(
       {this.dateWidth = 60.0,
       this.rowHeight = 30.0,
       required this.taskItem,
+      this.taskItemStyle,
       super.key});
 
   late int dateDiff;
@@ -32,7 +37,7 @@ class GanttChartTaskItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     onInit();
     double taskWidth = dateWidth * dateDiff;
-    return Container(
+    return SizedBox(
       width: taskWidth + 100,
       child: Stack(
         children: [
@@ -46,21 +51,25 @@ class GanttChartTaskItemWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Container(
-                    padding: const EdgeInsets.only(left: 4.0),
-                    decoration: BoxDecoration(
-                      color: taskItem.onProgressColor,
-                      borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(5.0),
-                        bottomLeft: Radius.circular(5.0),
+                  Tooltip(
+                    message: taskItem.taskDescription,
+                    child: Container(
+                      padding: const EdgeInsets.only(left: 4.0),
+                      decoration: BoxDecoration(
+                        color: taskItem.onProgressColor,
+                        borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(5.0),
+                          bottomLeft: Radius.circular(5.0),
+                        ),
                       ),
-                    ),
-                    width: taskWidth * taskItem.percent / 100,
-                    height: rowHeight,
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      taskItem.taskDescription,
-                      overflow: TextOverflow.ellipsis,
+                      width: taskWidth * taskItem.percent / 100,
+                      height: rowHeight,
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        taskItem.taskDescription,
+                        overflow: TextOverflow.ellipsis,
+                        style: taskItemStyle ?? taskItemText,
+                      ),
                     ),
                   ),
                 ],

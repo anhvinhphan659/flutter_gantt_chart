@@ -67,14 +67,14 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     var taskList = [
       GanttChartTaskItem(
-          startDate: DateTime(2022, 12, 28),
-          endDate: DateTime(2022, 12, 31),
+          startDate: DateTime(2022, 12, 31),
+          endDate: DateTime(2023, 1, 5),
           percent: 75,
           taskDescription: "Hello World",
           onProgressColor: Colors.red,
           restProgressColor: Colors.red.shade200),
       GanttChartTaskItem(
-          startDate: DateTime(2022, 12, 29),
+          startDate: DateTime(2022, 12, 31),
           endDate: DateTime(2023, 1, 2),
           percent: 100,
           taskDescription: "Hello World",
